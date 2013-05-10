@@ -1,5 +1,19 @@
+from brewerydb import *
+
+
 def beerprofile():
-    return dict(datbeer="BeerName")
+
+    # form=FORM('Brewery Database url:', INPUT(_name='url'), INPUT(_type='submit'))
+    # return dict(form=form)
+
+    return dict()
+
+def echo():
+
+
+    
+    return request.vars.name
+
 
 
 

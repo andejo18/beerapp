@@ -1,3 +1,15 @@
-{{extend 'layout.html'}}
 
-<h1>Learn about {{=datbeer}}</h1>
+<!-- API KEY 72166c358bc617ab5c18ecf67630a322 -->
+
+{{extend 'layout.html'}}
+<script language="javascript"
+     src="{{=URL('static','output/tacos.js')}}">
+    </script>
+<form>
+   <input name="name" onkeyup="ajax('echo', ['name'], 'target')" />
+</form>
+
+<div id="target"></div>
+
+<button id="button1">I'm a button. Click me!</button>
+
