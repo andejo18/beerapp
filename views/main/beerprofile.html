@@ -5,6 +5,9 @@
 <script language="javascript"
      src="{{=URL('static','output/tacos.js')}}">
     </script>
+
+<!-- {{=A('click me', callback=URL('main/beerprofile'))}} -->
+
 <form>
    <input name="name" onkeyup="ajax('echo', ['name'], 'target')" />
 </form>
