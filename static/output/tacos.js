@@ -1,7 +1,7 @@
 
 // //stuff for initializing that brewery stuff.
-var BreweryDb = require('brewerydb-node');
-var brewdb = new BreweryDb('72166c358bc617ab5c18ecf67630a322');
+// var BreweryDb = require('brewerydb-node');
+// var brewdb = new BreweryDb('72166c358bc617ab5c18ecf67630a322');
 
 
 
