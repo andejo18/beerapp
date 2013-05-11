@@ -1,8 +1,11 @@
-from requestdir import *
+import *
+
+
+# from requestdir.build.lib import requests
 
 DEFAULT_BASE_URI = "http://api.brewerydb.com/v2"
 BASE_URI = ""
-API_KEY = "72166c358bc617ab5c18ecf67630a322"
+API_KEY = ""
 
 simple_endpoints = ["beers", "breweries", "categories", "events",
                     "featured", "features", "fluidsizes", "glassware",
