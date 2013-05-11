@@ -47,6 +47,7 @@
         for (var i = 0; i < results.length; i++) {
           var place = results[i];
           createMarker(results[i]);
+          document.getElementById("breweryList").innerHTML = document.getElementById("breweryList").innerHTML + results[i].name;
         }
       }
     }
@@ -54,9 +55,6 @@
 
     function createMarker(place) {
       var placeLoc = place.geometry.location;
-
-
-      console.log(place.name);
 
       var marker = new google.maps.Marker({
         map: map,
@@ -78,3 +76,4 @@
 
 
   <div id="mapSpot"/>
+  <div id="breweryList"/>
