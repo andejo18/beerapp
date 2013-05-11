@@ -8,9 +8,9 @@
     function success(position) {
       var mapcanvas = document.createElement('div');
       mapcanvas.id = 'mapcontainer';
-      mapcanvas.style.height = '400px';
-      mapcanvas.style.width = '600px';
-      document.getElementById('mapSpot').appendChild(mapcanvas);
+      mapcanvas.style.height = '500px';
+      mapcanvas.style.width = '1000px';
+      document.getElementById('mapSpot').insertBefore(mapcanvas, document.getElementById('breweryList'));
       //var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       var coords = new google.maps.LatLng(43.0731, -89.4011);
       var options = {
@@ -43,11 +43,18 @@
 
 
     function callback(results, status) {
+      
       if (status == google.maps.places.PlacesServiceStatus.OK) {
+        document.getElementById("breweryList").innerHTML ="<ol id='brewList'></ol>";
         for (var i = 0; i < results.length; i++) {
           var place = results[i];
           createMarker(results[i]);
-          document.getElementById("breweryList").innerHTML = document.getElementById("breweryList").innerHTML + results[i].name;
+
+          var brewery = document.createElement('li');
+          brewery.innerHTML = results[i].name;
+
+          document.getElementById("brewList").appendChild(brewery);
+          //document.getElementById("brewList").innerHTML = document.getElementById("brewList").innerHTML + "<li>" + results[i].name + "</li>";
         }
       }
     }
