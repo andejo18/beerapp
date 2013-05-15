@@ -41,7 +41,6 @@ def dbquery():
     return d
 
 def locator():
-    
-    
-    return dict(datbeer= "BeerName")
+    form = SQLFORM(db.location)
+    return dict(form=form)
 

@@ -1,0 +1,26 @@
+
+<!-- API KEY 72166c358bc617ab5c18ecf67630a322 -->
+
+{{extend 'layout.html'}}
+<script language="javascript"
+     src="{{=URL('static','output/tacos.js')}}">
+    </script>
+
+<!-- {{=A('click me', callback=URL('main/beerprofile'))}} -->
+
+<form>
+   <input name="name" onkeyup="ajax('echo', ['name'], 'querystring')" />
+   <br>
+   <br>
+   <!-- <input name="url" onfocus="ajax('printer', ['url'], 'target')"/> -->
+</form>
+
+<button id="button1" onclick="ajax('dbquery',['name'], 'target')">I'm a button. Click me!</button>
+
+
+<div id="querystring"></div>
+
+<div id="target"></div>
+
+
+

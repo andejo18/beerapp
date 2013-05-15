@@ -3,6 +3,11 @@
   <script>
 
 
+
+  var myLat;
+  var myLong;
+
+  function initialize(){
     var map;
 
     function success(position) {
@@ -11,33 +16,92 @@
       mapcanvas.style.height = '500px';
       mapcanvas.style.width = '1000px';
       document.getElementById('mapSpot').insertBefore(mapcanvas, document.getElementById('breweryList'));
-      //var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-      var coords = new google.maps.LatLng(43.0731, -89.4011);
-      var options = {
-        zoom: 13,
-        center: coords,
-        mapTypeControl: false,
-        navigationControlOptions: {
-          style: google.maps.NavigationControlStyle.SMALL
-        },
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      map = new google.maps.Map(document.getElementById("mapcontainer"), options);
-      var marker = new google.maps.Marker({
-          position: coords,
-          map: map,
-          title:"You are here!",
-      });
 
 
-      var request = {
-        location: coords,
-        radius: '500',
-        query: 'brewery'
-      };
+      if (document.getElementById('location_Use_Current_Location').checked){
 
-      service = new google.maps.places.PlacesService(map);
-      service.textSearch(request, callback);
+
+        myLat = position.coords.latitude;
+        myLong = position.coords.longitude;
+        //var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+
+
+        var coords = new google.maps.LatLng(myLat, myLong);
+
+        var options = {
+          zoom: 13,
+          center: coords,
+          mapTypeControl: false,
+          navigationControlOptions: {
+            style: google.maps.NavigationControlStyle.SMALL
+          },
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("mapcontainer"), options);
+        var marker = new google.maps.Marker({
+            position: coords,
+            map: map,
+            title:"You are here!",
+        });
+
+
+        var request = {
+          location: coords,
+          radius: '500',
+          query: 'brewery'
+        };
+
+        service = new google.maps.places.PlacesService(map);
+        service.textSearch(request, callback);
+
+
+
+        }
+
+
+
+      else{
+
+        var address = document.getElementById("locQuery").value
+
+        findLoc(address, function(la, lo){
+          myLat = la;
+          myLong = lo;
+          console.log("inside callback function", myLat, myLong);
+
+          var coords = new google.maps.LatLng(myLat, myLong);
+
+          var options = {
+            zoom: 13,
+            center: coords,
+            mapTypeControl: false,
+            navigationControlOptions: {
+              style: google.maps.NavigationControlStyle.SMALL
+            },
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          map = new google.maps.Map(document.getElementById("mapcontainer"), options);
+          var marker = new google.maps.Marker({
+              position: coords,
+              map: map,
+              title:"You are here!",
+          });
+
+
+          var request = {
+            location: coords,
+            radius: '500',
+            query: 'brewery'
+          };
+
+          service = new google.maps.places.PlacesService(map);
+          service.textSearch(request, callback);
+
+
+        });
+
+      }
 
     }
 
@@ -45,19 +109,34 @@
     function callback(results, status) {
       
       if (status == google.maps.places.PlacesServiceStatus.OK) {
-        document.getElementById("breweryList").innerHTML ="<ol id='brewList'></ol>";
+        document.getElementById("breweryList").innerHTML = ""
         for (var i = 0; i < results.length; i++) {
           var place = results[i];
           createMarker(results[i]);
-
-          var brewery = document.createElement('li');
-          brewery.innerHTML = results[i].name;
-
-          document.getElementById("brewList").appendChild(brewery);
-          //document.getElementById("brewList").innerHTML = document.getElementById("brewList").innerHTML + "<li>" + results[i].name + "</li>";
+          document.getElementById("breweryList").innerHTML = document.getElementById("breweryList").innerHTML + (i+1) + ") " + results[i].name +  "<br>";
         }
       }
     }
+
+
+    
+
+    function findLoc(address, cb) {
+
+      console.log("geocoding start");
+
+      geocoder = new google.maps.Geocoder();
+      geocoder.geocode({'address': address}, function(results, status) {
+        if (status != google.maps.GeocoderStatus.OK) {
+          alert("Geocoder failed due to: " + status);
+          
+        }
+
+        cb(results[0].geometry.location.kb, results[0].geometry.location.lb);
+      });
+
+    }
+
 
 
     function createMarker(place) {
@@ -73,16 +152,38 @@
     } 
 
 
-    
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success);
-    } else {
-      error('Geo Location is not supported');
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success);
+      } else {
+        error('Geo Location is not supported');
+      }
+
     }
+
+
+
+
+    function toggleSearch() {
+
+      if (document.getElementById("location_Use_Current_Location").checked){
+        document.getElementById("searchBar").style["display"] = "none";
+      }
+      else{
+        document.getElementById("searchBar").style["display"] = "inline";
+      }
+
+    }
+
+    //google.maps.event.addDomListener(window, 'load' , initialize);
   </script>
 
 
-  <div id="methodSelect"> hello put stuff here lol </div>
+    Use Current Location: <input type="checkbox" id= "location_Use_Current_Location" onChange= "toggleSearch()"><br>
+    <div id="searchBar">Search: <input type="text" name="Search" id = "locQuery"><br></div>
+    <input type="button" value="Submit" onClick = "initialize()">
+
+
 
   <div id="mapSpot"/>
   <div id="breweryList"/>
