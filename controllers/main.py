@@ -50,6 +50,7 @@ def dumper():
 
 
 def locator():
-    form = SQLFORM(db.location)
-    return dict(form=form)
+    reference=urllib2.urlopen("https://maps.googleapis.com/maps/api/place/details/json?reference=CoQBegAAAKTLGPNK5WrDyrG5aEPkn6vkAyrf_nERYb58fP70u5Xjl6kCCtgQVO39pMVG3KTS1VLaAUho0NzFyPkgWQGowBvY-b3UQymN3BN2nCSgOpJ__VBkHkBaZF7CxgE5Om6xhx1h20pP1p1L2XspyMEpM-G2TSHf2x3_cWRGHuSly0oQEhAN-d2NuwCr-d52HSRXGkgRGhQATBnAoQ2YHItcgODyL_iTGYLLjA&sensor=true&key=AIzaSyDcTWUD6SC5iapjaIIbMoXoMzn_cyQl-6U")
+    mydict= json.load(reference)
+    return dict(mydict = mydict)
 
