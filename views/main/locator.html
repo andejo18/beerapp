@@ -9,8 +9,10 @@
 
   function initialize(){
     var map;
+    //document.getElementById("breweryList").innerHTML = ""
 
     function success(position) {
+      document.getElementById("mapSpot").innerHTML = "<div id='breweryList'/>"
       var mapcanvas = document.createElement('div');
       mapcanvas.id = 'mapcontainer';
       mapcanvas.style.height = '500px';
@@ -109,7 +111,7 @@
     function callback(results, status) {
       
       if (status == google.maps.places.PlacesServiceStatus.OK) {
-        document.getElementById("breweryList").innerHTML = ""
+        
         for (var i = 0; i < results.length; i++) {
           var place = results[i];
           createMarker(results[i]);
@@ -151,8 +153,6 @@
 
     } 
 
-
-
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(success);
       } else {
@@ -180,7 +180,7 @@
 
 
     Use Current Location: <input type="checkbox" id= "location_Use_Current_Location" onChange= "toggleSearch()"><br>
-    <div id="searchBar">Search: <input type="text" name="Search" id = "locQuery"><br></div>
+    <div id="searchBar">City Name: <input type="text" name="Search" id = "locQuery"><br></div>
     <input type="button" value="Submit" onClick = "initialize()">
 
 
