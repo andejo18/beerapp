@@ -91,15 +91,12 @@ def categories():
 
     print "\n"
 
+    print respd
     # Make list of category dicts
     catdictlist = respd.items()[2][1]
 
-    for acat in catdictlist:
-        catestlist.append(acat['name'])
-        print acat['name']
 
-
-    return dict(res=catestlist)
+    return dict(res=catdictlist)
 
 def styles():
     #note to self - the styles are connected to the categories in
@@ -135,8 +132,6 @@ def styles():
 
     return dict(sdict=styledictlist)
 
-def getStyleInfo():
-    pass
 
 
 def beerlistings():
@@ -166,8 +161,6 @@ def beerlistings():
 
     abeer = beerdictlist[0]
 
-    for deet in abeer:
-        print deet + "\n"
 
 
 
@@ -186,8 +179,7 @@ def beerlistings():
 
 
 def beerprofile():
-        #pass in the style id and get the beer with the parameter of styleId of
-    # the style passed in.
+        #pass in the Beer id and get the beer with the parameter
     # Data
 
     # GIVEN THE Beer ID OF "8-Bit Pale Ale":
@@ -205,20 +197,10 @@ def beerprofile():
     profdict = respdi[2][1]
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     return dict(beerd=profdict,beertitle=beername)
 
+def printer():
+    print request.vars.z
 
+    print "I hart fart"
 

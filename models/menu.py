@@ -25,7 +25,8 @@ response.menu = [
     (T('Home'), False, URL('default', 'index'), []),
     (T('Beer That Is Near'), False, URL('main', 'locator'), []),
     (T('Beer Info'), False, URL('main', 'beerprofile'), []),
-    (T('Discover a Beer'), False, URL('beers', 'discovery'), [])
+    (T('Discover a Beer'), False, URL('beers', 'styles'), [])
+    (T('Discover a Beer'), False, URL('beers', 'styles'), [])
 ]
 
 DEVELOPMENT_MENU = False
