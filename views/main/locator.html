@@ -2,8 +2,6 @@
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true"></script>
   <script>
 
-
-
   var myLat;
   var myLong;
 
@@ -20,7 +18,7 @@
       document.getElementById('mapSpot').insertBefore(mapcanvas, document.getElementById('breweryList'));
 
 
-      if (document.getElementById('location_Use_Current_Location').checked){
+      if (document.getElementById('location').checked){
 
 
         myLat = position.coords.latitude;
@@ -47,7 +45,6 @@
             title:"You are here!",
         });
 
-
         var request = {
           location: coords,
           radius: '500',
@@ -57,10 +54,7 @@
         service = new google.maps.places.PlacesService(map);
         service.textSearch(request, callback);
 
-
-
         }
-
 
 
       else{
@@ -70,7 +64,6 @@
         findLoc(address, function(la, lo){
           myLat = la;
           myLong = lo;
-          console.log("inside callback function", myLat, myLong);
 
           var coords = new google.maps.LatLng(myLat, myLong);
 
@@ -113,9 +106,13 @@
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         
         for (var i = 0; i < results.length; i++) {
-          var place = results[i];
+          
           createMarker(results[i]);
+
+          var place = results[i];
           document.getElementById("breweryList").innerHTML = document.getElementById("breweryList").innerHTML + (i+1) + ") " + results[i].name +  "<br>";
+
+
         }
       }
     }
@@ -125,7 +122,7 @@
 
     function findLoc(address, cb) {
 
-      console.log("geocoding start");
+  
 
       geocoder = new google.maps.Geocoder();
       geocoder.geocode({'address': address}, function(results, status) {
@@ -138,7 +135,6 @@
       });
 
     }
-
 
 
     function createMarker(place) {
@@ -162,11 +158,9 @@
     }
 
 
-
-
     function toggleSearch() {
 
-      if (document.getElementById("location_Use_Current_Location").checked){
+      if (document.getElementById("location").checked){
         document.getElementById("searchBar").style["display"] = "none";
       }
       else{
@@ -178,12 +172,9 @@
     //google.maps.event.addDomListener(window, 'load' , initialize);
   </script>
 
-
-    Use Current Location: <input type="checkbox" id= "location_Use_Current_Location" onChange= "toggleSearch()"><br>
+    Use Current Location: <input type="checkbox" id= "location" onChange= "toggleSearch()"><br>
     <div id="searchBar">City Name: <input type="text" name="Search" id = "locQuery"><br></div>
-    <input type="button" value="Submit" onClick = "initialize()">
-
-
+    <input type="button" value="Find Me Some Beer!" onClick = "initialize()">
 
   <div id="mapSpot"/>
   <div id="breweryList"/>
