@@ -4,7 +4,10 @@
      src="{{=URL('static','js/discovery.js')}}">
 </script>
 
-<div id="content">
+<button onclick="ajaxButton()">Ajax Request</button>
+
+
+<div name="name" id="content">
 
     <h1>What kind of beer are you looking for?</h1>
 
@@ -17,3 +20,11 @@
     </div>
 
 </div>
+
+<input name="name" autofocus />
+
+<button id="button1" onclick="ajax('datquery',['name'],'target')">I'm a button. Click me!</button>
+
+<div id="target"></div>
+
+{{=respd}}

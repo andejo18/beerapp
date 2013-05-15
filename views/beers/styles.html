@@ -1,0 +1,30 @@
+
+{{extend 'layout.html'}}
+
+<!-- #How to get the cat name of the style at
+print "Style's category: " + styledictlist[0]['category']['name'] -->
+
+<h2>Categories and styles!</h2>
+<!-- print the categories, without repeating. -->
+{{printobjects = []}}
+{{for astyle in sdict:}}
+{{if (astyle['category']['name'] not in printobjects):}}
+{{printobjects.append(astyle['category']['name'])}}
+{{pass}}
+{{pass}}
+
+<ul>
+{{for acat in printobjects:}}
+<li>
+{{=acat}}</li>
+{{pass}}
+</ul>
+
+
+<ul>
+{{for astyle in sdict:}}
+<li>
+{{=astyle['name']}}
+</li>
+{{pass}}
+</ul>

@@ -1,3 +1,9 @@
+# db.define_table('categories',
+#     Field('name','string'),
+#     Field(''))
+
+
+
 # db.define_table('beer',
 #     Field('style','string',required=True),
 #     Field('description','string'),

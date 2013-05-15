@@ -1,0 +1,32 @@
+{{extend 'layout.html'}}
+
+
+<h2>{{=beerstyle}} </h2>
+
+<!-- {{=bdict}} -->
+<!-- print the beers names and id numbers -->
+
+<ul>
+{{for obj in bdict[0]:}}
+<li>
+{{=obj}}
+</li>
+{{pass}}
+</ul>
+
+
+
+<ul>
+{{for abeer in bdict:}}
+<li><div>
+    Name: {{=abeer.get('name')}}
+    {{if abeer.get('abv'):}}
+    ABV: {{=abeer['abv']}}
+    {{pass}}
+    {{if abeer.get('name') == "8-Bit Pale Ale":}}
+    {{=abeer.get('id')}}
+    {{pass}}
+</div>
+</li>
+{{pass}}
+</ul>

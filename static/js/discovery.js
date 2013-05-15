@@ -46,11 +46,22 @@ $(document).ready(function()
 
 
 });
+
+function ajaxButton()
+{
+    $.ajax('/beerme/beers/datquery',
+          function(data){ alert(data); });
+    // $.getJSON('/beerme/beers/datquery',
+    //       function(data){ alert(data); });
+}
+
 function tiertwoinit()
 {
     $('div .tiertwo').click(function() {
         console.log("two clicked")
         console.log($(this).attr('id'))
-        
+
     })
 }
+
+
