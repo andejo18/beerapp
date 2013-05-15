@@ -5,22 +5,19 @@
 <script language="javascript"
      src="{{=URL('static','output/tacos.js')}}">
     </script>
-
 <!-- {{=A('click me', callback=URL('main/beerprofile'))}} -->
 
 <form>
-   <input name="name" onkeyup="ajax('echo', ['name'], 'querystring')" />
-   <br>
-   <br>
-   <!-- <input name="url" onfocus="ajax('printer', ['url'], 'target')"/> -->
+    <h4>Enter a beer to search for:</h4> 
+    <input name="name" onkeyup="ajax('echo', ['name'], 'querystring')" placeholder="A query for the db"autofocus />
+    <br>
+    <br>
+    <!-- <input name="url" onfocus="ajax('printer', ['url'], 'target')"/> -->
 </form>
 
-<button id="button1" onclick="ajax('dbquery',['name'], 'target')">I'm a button. Click me!</button>
+<button id="button1" onclick="ajax('dbquery',['name'])">I'm a button. Click me!</button>
 
-
-<div id="querystring"></div>
+<h4>URL currently sent to BreweryDB:</h4> 
+<div id="querystring">http://api.brewerydb.com/v2/search/?key=72166c358bc617ab5c18ecf67630a322&q=________&type=beer</div>
 
 <div id="target"></div>
-
-
-

@@ -15,7 +15,7 @@ def beerprofile():
 
     # print BreweryDb.beers()
 
-    return dict()
+    return dict(results="make a search, already!")
 
 def echo():
     query = "q=" + request.vars.name
@@ -25,7 +25,11 @@ def echo():
     return pquerystring
 
 
+
 def dbquery():
+    # initialize information about the beer
+    import gluon.contrib.simplejson
+
     query = "q=" + request.vars.name
     # make query
     # query = urllib.urlencode(dict(q="blue angel", rpp=5, include_entities=1,
@@ -35,8 +39,15 @@ def dbquery():
 
     # make dictionary (parse json response)
     d = json.load(resp)
-    
+    print
     return d
+
+
+def dumper():
+    names = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+    import gluon.contrib.simplejson
+    return gluon.contrib.simplejson.dumps(names)
+
 
 def locator():
     

@@ -8,13 +8,16 @@
 
 $(document).ready(function()
 {
-    $('#button1').click(function() 
-    {
-        console.log("shit, mane")
-
-    });
+    
+    // $('#button1').click(function() 
+    // {
+    //     console.log("shit, mane")
+    //     $.getJSON('/beerme/main/dbquery', function(data)  
+    //     {
+    //         console.log(data)
+    //     })
+    // });
 });
-
 
 
 
