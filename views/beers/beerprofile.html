@@ -1,1 +1,57 @@
 <!-- 8-Bit Pale Ale : odItSS -->
+
+{{extend 'layout.html'}}
+
+<h2>{{=beertitle}}</h2>
+
+
+
+
+<!-- code block for checking if labels are there and which ones -->
+<div id="profpic">
+{{if beerd.get('labels'):}}
+{{if beerd['labels'].get('medium'):}}
+{{=IMG(_src=beerd['labels'].get('medium'), _alt='test')}}
+{{pass}}
+{{elif beerd['labels'].get('large'):}}
+{{=IMG(_src=beerd['labels'].get('large'), _alt='test')}}
+
+{{pass}}
+{{pass}}
+{{pass}}
+
+
+</div>
+
+<!-- Stats -->
+<div id="beerinfo">
+    <!-- IBU -->
+    <div id="ibu">
+        IBUs: {{=beerd['ibu']}}
+    </div>
+
+    <!-- ABV -->
+
+    <div id="ibu">
+        ABV: {{=beerd['abv']}}
+    </div>
+
+<!-- code for description -->
+
+<div id="beerdesc">
+    About the beer: {{=beerd['description']}}
+
+</div>
+
+<!-- code block for brewery name and picture -->
+<div id="breweryinfo">
+
+<div id="breweryname">{{=beerd['breweries'][0]['name']}}  </div>
+
+<div id="brewerypic">
+{{=IMG(_src=beerd['breweries'][0]['images'].get('medium'), _alt='test')}}
+</div>
+
+</div>
+
+</div>

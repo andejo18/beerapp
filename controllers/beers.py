@@ -190,45 +190,35 @@ def beerprofile():
     # the style passed in.
     # Data
 
-    # GIVEN THE Beer ID OF "American-Style Pale Ale":
+    # GIVEN THE Beer ID OF "8-Bit Pale Ale":
     beerId = "odItSS"
 
-    # List of style dictionaries 
-    beerdictlist = []
-    #list of style
-    beerlist = []
+    beername = "8-Bit Pale Ale"
+
+    
     # make the request
-    resp = urllib2.urlopen("http://api.brewerydb.com/v2/beers/?key=72166c358bc617ab5c18ecf67630a322&styleId=" + styleid + "p=10")
+    resp = urllib2.urlopen("http://api.brewerydb.com/v2/beer/" + beerId + "?key=72166c358bc617ab5c18ecf67630a322&withBreweries=Y")
     # make dictionary of the response. 
     respdi = json.load(resp).items()
 
     print "\n"
-    beerdictlist = respdi[3][1]
-
-    # total results vvvvv
-    # print beerdictlist[2]
-
-    print beerdictlist[2]['name']
-
-    abeer = beerdictlist[0]
-
-    for deet in abeer:
-        print deet + "\n"
+    profdict = respdi[2][1]
 
 
 
-    # Make list of category dicts
-    # beerdictlist = respd.items()[2][1]
-    # print "Beer: " + beerdictlist[0]['name']
-    #How to get the cat name of the style at
-    # print "Style's category: " + beerdictlist[0]['category']['name']
-
-    # for astyle in styledictlist:
-    #     stylelist.append(astyle['name'])
-    #     print astyle['name']
 
 
-    return dict(bdict=beerdictlist, beerstyle="American-Style Pale Ale")
+
+
+
+
+
+
+
+
+
+
+    return dict(beerd=profdict,beertitle=beername)
 
 
 
