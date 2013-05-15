@@ -35,6 +35,10 @@ input[type=text],input[type=password],select{width:300px; margin-right:5px}
 .right {float:right; text-align:right}
 .left {float:left; text-align:left}
 .center {width:100; text-align:center; vertical-align:middle}
+
+#mapSpot {display: inline;}
+/*#breweryList {float: right;} */
+
 /** end **/
 
 /* Sticky footer begin */

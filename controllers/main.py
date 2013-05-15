@@ -50,7 +50,6 @@ def dumper():
 
 
 def locator():
-    
-    
-    return dict(datbeer= "BeerName")
+    form = SQLFORM(db.location)
+    return dict(form=form)
 
