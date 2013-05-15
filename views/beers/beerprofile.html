@@ -2,7 +2,7 @@
 
 {{extend 'layout.html'}}
 
-<h2>{{=beertitle}}</h2>
+<h2>{{=beerd['name']}}</h2>
 
 
 
@@ -46,6 +46,8 @@
 <!-- code block for brewery name and picture -->
 <div id="breweryinfo">
 
+<h3>About the Brewery:</h3>
+
 <div id="breweryname">{{=beerd['breweries'][0]['name']}}  </div>
 
 <div id="brewerypic">
@@ -54,4 +56,7 @@
 
 </div>
 
+<div id="breweryinfo">{{=beerd['breweries'][0]['description']}}</div>
+
 </div>
+

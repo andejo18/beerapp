@@ -1,0 +1,28 @@
+
+{{extend 'layout.html'}}
+
+<script language="javascript"
+     src="{{=URL('static','output/styles.js')}}">
+</script>
+
+
+
+<h2>Categories</h2>
+<!-- print the categories, without repeating. -->
+
+<ul>
+{{for acat in res:}}
+<li>
+{{=acat['name']}}
+</li>
+{{pass}}
+
+
+</ul>
+
+
+
+<!-- get this to pass the id to the next page -->
+
+
+<h5><a href="/beerme/beers/styles">Next</a></h5>

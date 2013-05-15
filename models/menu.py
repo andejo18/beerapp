@@ -24,9 +24,8 @@ response.google_analytics_id = None
 response.menu = [
     (T('Home'), False, URL('default', 'index'), []),
     (T('Beer That Is Near'), False, URL('main', 'locator'), []),
-    (T('Beer Info'), False, URL('main', 'beerprofile'), []),
-    (T('Discover a Beer'), False, URL('beers', 'styles'), [])
-    (T('Discover a Beer'), False, URL('beers', 'styles'), [])
+    (T('Discover a New Beer'), False, URL('beers', 'categories'), []),
+    (T('Beer Profile'), False, URL('beers', 'beerprofile'), [])
 ]
 
 DEVELOPMENT_MENU = False
